@@ -1,9 +1,9 @@
+/**
+ * Состояние приложения
+ * 
+ * @type {{selectedId: number, selectedSquareElement: HTMLDivElement}}
+ */
 const appState = {
-    selectedSquare: {
-        id: '',
-        column: -1,
-        row: -1
-    },
     selectedId: -1,
     selectedSquareElement: undefined
 }
@@ -41,6 +41,12 @@ class ChessController {
         this.containerDiv = containerDiv;
     }
 
+    /**
+     * Начинает игру
+     * 
+     * @returns {void}
+     * @public
+     */
     initializeGame() {
         this.initializeBoard();
         this.setEventListeners();
@@ -48,7 +54,9 @@ class ChessController {
 
     /**
      * Создает шахматную доску в контейнере веб-приложения
+     * 
      * @returns {void}
+     * @private
      */
     initializeBoard() {
         this.boardDiv = document.createElement('div');
@@ -97,47 +105,52 @@ class ChessController {
         } */
     }
 
+    /**
+     * Назначает обработчики событий пользовательским элементам управления
+     * 
+     * @returns {void}
+     * @private
+     */
     setEventListeners() {
         this.squaresDiv.addEventListener("click", this.onSquaresClick);
     }
 
+    /**
+     * Обработчик события - нажатие мышью на область с клетками
+     * 
+     * @returns {void}
+     * @private 
+     */
     onSquaresClick = (event) => {
-        const selectedSquare = event.target;
-        if (!(selectedSquare.classList.contains('square-black') || selectedSquare.classList.contains('square-white'))) {
-            /* Если рользователь нажал не на клетку, то ничего не делаем */
-            return;
-        }
-        const selectedId = selectedSquare.id;
-
-        if (appState.selectedId !== selectedId) {
-            /* Если выбрана еще не выбранная клетка, выбирае ее и меняем состояние приложения соответственно */
-            if (appState.selectedId !== -1) {
-                this.toggleSelectedSquare();
-            }
-
-            appState.selectedSquareElement = selectedSquare;
-            appState.selectedId = selectedId;
-
+        if (appState.selectedId !== -1) {
             this.toggleSelectedSquare();
         }
+
+    }
         else {
-            /* Если нажата уже выбранная клетка, то отменяем выделение и сбрасываем состояние */
-            this.toggleSelectedSquare();
+    /* Если нажата уже выбранная клетка, то отменяем выделение и сбрасываем состояние */
+    this.toggleSelectedSquare();
 
-            appState.selectedId = -1;
-            appState.selectedSquareElement = undefined;
+    appState.selectedId = -1;
+    appState.selectedSquareElement = undefined;
 
-        }
-        console.log(appState.selectedSquareElement);
+}
+console.log(appState.selectedSquareElement);
     }
 
-    toggleSelectedSquare() {
-        if (appState.selectedSquareElement.classList.contains('square-white')) {
-            appState.selectedSquareElement.classList.toggle('square-selected-white');
-        }
-        else if (appState.selectedSquareElement.classList.contains('square-black')) {
-            appState.selectedSquareElement.classList.toggle('square-selected-black');
-        }
+/**
+ * Выделяет или снимает выделение у выбранной клетки
+ * 
+ * @returns {void}
+ * @private
+ */
+toggleSelectedSquare() {
+    if (appState.selectedSquareElement.classList.contains('square-white')) {
+        appState.selectedSquareElement.classList.toggle('square-selected-white');
     }
+    else if (appState.selectedSquareElement.classList.contains('square-black')) {
+        appState.selectedSquareElement.classList.toggle('square-selected-black');
+    }
+}
 
 }
