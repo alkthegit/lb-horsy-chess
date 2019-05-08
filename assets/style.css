@@ -1,0 +1,40 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    height: 15vh;
+    background-color: #005272;
+    color: white;
+    padding-bottom: 10px;
+}
+
+header h1{
+    padding-top: 10px;
+    opacity: 0.8;
+    text-align: center;
+}
+
+header h1::before{
+    content: '👑';
+    position: absolute;
+    transform: translateX(-110%);
+    font-size: 1.5em;
+}
+
+header p{
+    margin-top: 10px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+header .main-subheading{
+    font-size: 16px;
+    margin-top: -3px;
+    transform: rotate(-2deg) translateX(4em);
+}
