@@ -38,3 +38,53 @@ header .main-subheading{
     margin-top: -3px;
     transform: rotate(-2deg) translateX(4em);
 }
+
+.board{
+    border: 1px solid black;
+    height: 480px;
+    width: 440px;
+    background-color: #eeeeee;
+    margin: 25px auto;
+    /* padding: 30px; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.col-axis{
+    width: 50px;
+    height: 20px;
+    /* border: 1px solid grey; */
+    margin: 10px 0;
+    text-align: center;
+    position: relative;
+    
+    /* transform: translateY(-100%); */
+}
+
+.row-axis{
+    width: 20px;
+    height: 50px;
+    /* border: 1px solid grey; */
+    margin: 0 10px;
+    text-align: center;
+    position: relative;
+    
+    /* transform: translateY(-100%); */
+}
+
+.square-black,
+.square-white{
+    width: 50px;
+    height: 50px;
+    /* border: 1px solid grey; */
+    margin:0;
+}
+
+.square-black{
+    background-color: #003030;
+}
+
+.square-white{
+    background-color: #eeffff;
+}
