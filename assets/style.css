@@ -41,14 +41,23 @@ header .main-subheading{
 
 .board{
     border: 1px solid black;
-    height: 480px;
-    width: 440px;
+    height: 500px;
+    width: 500px;
     background-color: #eeeeee;
     margin: 25px auto;
     /* padding: 30px; */
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.squares{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    border: 1px solid darkgoldenrod;
 }
 
 .col-axis{
@@ -87,4 +96,12 @@ header .main-subheading{
 
 .square-white{
     background-color: #eeffff;
+}
+
+.square-selected-black{
+    box-shadow: inset 0px 0px 5px 7px #e100ff;
+}
+
+.square-selected-white{
+    box-shadow: inset 0px 0px 5px 7px #830094;
 }
