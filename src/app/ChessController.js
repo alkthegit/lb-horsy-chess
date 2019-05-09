@@ -66,6 +66,7 @@ class ChessController {
     initializeGame() {
         this.initializeBoard();
         this.setEventListeners();
+        console.log(`Game started`);
     }
 
     /**
