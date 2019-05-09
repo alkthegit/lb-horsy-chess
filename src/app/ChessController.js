@@ -229,15 +229,53 @@ class ChessController {
      * @private
      */
     populateAxis() {
-        const axisHTML = `
-            <div class="axis-hr">A</div>
-            <div class="axis-hr">B</div>
-            <div class="axis-hr">C</div>
-            <div class="axis-hr">D</div>
-            <div class="axis-hr">E</div>
-            <div class="axis-hr">F</div>
-            <div class="axis-hr">G</div>
-            <div class="axis-hr">H</div>
+        let axisHTML;
+        let axisElement;
+
+        // разметка для верхней и для нижней оси
+        axisHTML = `
+            <div class="axis-label-hr">A</div>
+            <div class="axis-label-hr">B</div>
+            <div class="axis-label-hr">C</div>
+            <div class="axis-label-hr">D</div>
+            <div class="axis-label-hr">E</div>
+            <div class="axis-label-hr">F</div>
+            <div class="axis-label-hr">G</div>
+            <div class="axis-label-hr">H</div>
         `;
+
+        // верхняя ось
+        axisElement = this.boardDiv.querySelector('.axis-top');
+        if (axisElement) {
+            axisElement.insertAdjacentHTML("afterbegin", axisHTML);
+        }
+        // нижняя ось
+        axisElement = this.boardDiv.querySelector('.axis-bottom');
+        if (axisElement) {
+            axisElement.insertAdjacentHTML("afterbegin", axisHTML);
+        }
+
+        // разметка для левой и правой оси
+        axisHTML = `
+            <div class="axis-label-vr">8</div>
+            <div class="axis-label-vr">7</div>
+            <div class="axis-label-vr">6</div>
+            <div class="axis-label-vr">5</div>
+            <div class="axis-label-vr">4</div>
+            <div class="axis-label-vr">3</div>
+            <div class="axis-label-vr">2</div>
+            <div class="axis-label-vr">1</div>
+        `;
+
+        // верхняя ось
+        axisElement = this.boardDiv.querySelector('.axis-left');
+        if (axisElement) {
+            axisElement.insertAdjacentHTML("afterbegin", axisHTML);
+        }
+        // нижняя ось
+        axisElement = this.boardDiv.querySelector('.axis-right');
+        if (axisElement) {
+            axisElement.insertAdjacentHTML("afterbegin", axisHTML);
+        }
     }
 }

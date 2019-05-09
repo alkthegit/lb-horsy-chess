@@ -93,31 +93,52 @@ header .main-subheading{
 .axis-top,
 .axis-bottom{
     height: 50px;
-    border: 1px solid grey;
-    box-sizing: border-box
+    width: 400px;
+    /* border: 1px solid grey; */
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .axis-top{
     grid-area: top;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 5px;
 }
 
 .axis-bottom{
     grid-area: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 5px;
 }
 
 .axis-left,
 .axis-right{
     width: 50px;
-    border: 1px solid grey;
-    box-sizing: border-box
+    height: 400px;
+    /* border: 1px solid grey; */
+    box-sizing: border-box;
 }
 
 .axis-left{
     grid-area: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 5px;
 }
 
 .axis-right{
     grid-area: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 5px;
 }
 
 .square-black,
@@ -126,7 +147,16 @@ header .main-subheading{
     height: 50px;
     box-sizing: border-box;
     margin:0;
-    border: 1px solid crimson;
+    /* border: 1px solid crimson; */
+}
+
+.axis-label-hr{
+    width: 50px;
+}
+
+.axis-label-vr{
+    height: 50px;
+    line-height: 50px;
 }
 
 .square-black{
@@ -135,6 +165,11 @@ header .main-subheading{
 
 .square-white{
     background-color: #eeffff;
+}
+
+.square-white:hover,
+.square-black:hover{
+    cursor: pointer;
 }
 
 .square-selected-black,
