@@ -139,6 +139,9 @@ class ChessController {
      * @private 
      */
     onSquaresClick = (event) => {
+        /**
+         * @type {HTMLDivElement}
+         */
         const selectedSquare = event.target;
         if (!(selectedSquare.classList.contains('square-black') || selectedSquare.classList.contains('square-white'))) {
             /* Если рользователь нажал не на клетку, то ничего не делаем */
@@ -156,6 +159,8 @@ class ChessController {
                 // переключаем внешний вид выбранной клетки и клеток с ходами
                 this.toggleSelectedSquare();
                 this.toggleHighlightedSquares();
+                appState.selectedSquareElement.textContent = '';
+
             }
 
             // устанавливаем текущее состояние приложения
@@ -166,6 +171,7 @@ class ChessController {
             // переключаем внешний вид выбранной клетки и клеток с ходами
             this.toggleSelectedSquare();
             this.toggleHighlightedSquares();
+            selectedSquare.textContent = selectedSquare.id;
         }
         else {
             /* Если нажата уже выбранная клетка, то:
@@ -175,6 +181,8 @@ class ChessController {
             */
             this.toggleSelectedSquare();
             this.toggleHighlightedSquares();
+            appState.selectedSquareElement.textContent = '';
+
 
             this.resetAppState();
         }
@@ -199,15 +207,26 @@ class ChessController {
 
     toggleHighlightedSquares() {
         // подсвчиваем клетки
+        /**
+         * @type {HTMLDivElement}
+         */
         let squareElement;
         appState.moves.forEach((e) => {
             squareElement = this.squaresDiv.querySelector(`#${e}`);
-            // squareElement.classList.toggle('square-highlighted');
             if (squareElement.classList.contains('square-white')) {
                 squareElement.classList.toggle('square-highlighted-white');
             }
             else if (squareElement.classList.contains('square-black')) {
                 squareElement.classList.toggle('square-highlighted-black');
+            }
+
+            // если элемент подсвечен, то показываем название клетки, иначе убираем название
+            if (squareElement.classList.contains('square-highlighted-black') ||
+                squareElement.classList.contains('square-highlighted-white')) {
+                squareElement.textContent = squareElement.id;
+            }
+            else {
+                squareElement.textContent = '';
             }
         });
     }

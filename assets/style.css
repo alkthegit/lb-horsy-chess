@@ -147,6 +147,10 @@ header .main-subheading{
     height: 50px;
     box-sizing: border-box;
     margin:0;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 50px;
     /* border: 1px solid crimson; */
 }
 
@@ -161,10 +165,12 @@ header .main-subheading{
 
 .square-black{
     background-color: #003030;
+    color: #eaabfd;
 }
 
 .square-white{
     background-color: #eeffff;
+    color: #680088;
 }
 
 .square-white:hover,
@@ -184,6 +190,7 @@ header .main-subheading{
 
 .square-highlighted-white{
     background: #a400d6;
+    color: #eaabfd;
 }
 
 .square-highlighted-black{
