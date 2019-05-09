@@ -98,10 +98,20 @@ header .main-subheading{
     background-color: #eeffff;
 }
 
-.square-selected-black{
-    box-shadow: inset 0px 0px 5px 7px #e100ff;
+.square-selected-black,
+.square-black:hover{
+    box-shadow: inset 0px 0px 10px 10px #00ff55;
 }
 
-.square-selected-white{
-    box-shadow: inset 0px 0px 5px 7px #830094;
+.square-selected-white,
+.square-white:hover{
+    box-shadow: inset 0px 0px 10px 10px #00c542;
+}
+
+.square-highlighted-white{
+    background: #a400d6;
+}
+
+.square-highlighted-black{
+    background: #680088;
 }

@@ -1,13 +1,21 @@
 /**
  * Состояние приложения
- * 
+ * @type {{selectedId: number, selectedSquareElement: HTMLDivElement, moves: string[]}}
  */
 const appState = {
     selectedId: -1,
-    selectedSquareElement: undefined
+    selectedSquareElement: undefined,
+    moves: []
 }
 
 class ChessController {
+    /**
+     * Экземпляр класса Horsyfier
+     * 
+     * @type {Horsyfier}
+     * @private
+     */
+    horsyfier
     /**
      * Элемет-контейнер для всего веб-приложения. Задается единовременно при создании экземпляра класса
      * 
@@ -35,9 +43,18 @@ class ChessController {
     /**
      * 
      * @param {HTMLDivElement} containerDiv Элемент-контейнер для всего веб-приложения
+     * @param {Horsyfier} horsyfier Экземпляр управляющего класса Horsyfier
      */
-    constructor(containerDiv) {
+    constructor(containerDiv, horsyfier) {
+        if (!containerDiv) {
+            throw new Error(`Для контроллера необходимо указать контейнер приложения. Педано значение '${containerDiv}'`);
+        }
+        if (!horsyfier) {
+            throw new Error(`Для контроллера необходимо указать экземпляр класса Horsyfier. Передано значение '${horsyfier}'`);
+        }
+
         this.containerDiv = containerDiv;
+        this.horsyfier = horsyfier;
     }
 
     /**
@@ -68,13 +85,13 @@ class ChessController {
         this.boardDiv.insertAdjacentElement("afterbegin", this.squaresDiv);
 
         /* Порождение верхней оси кординат */
-        let axisRow = document.createElement('div');
+        /* let axisRow = document.createElement('div');
         let colAxisHTML = '';
         for (let col = 0; col < 8; col++) {
             colAxisHTML = `<div class="col-axis">${col + 1}</div>`;
             axisRow.insertAdjacentHTML("beforeend", colAxisHTML);
         }
-        this.boardDiv.insertAdjacentElement("afterbegin", axisRow);
+        this.boardDiv.insertAdjacentElement("afterbegin", axisRow); */
 
         /* Порождение клеток */
         let squareId = '';
@@ -128,26 +145,40 @@ class ChessController {
         }
         const selectedId = selectedSquare.id;
 
+        // получаем возможные ходы
+        this.horsyfier.setPosition(selectedId);
+
+        /* Выделяем нажатую клетку */
         if (appState.selectedId !== selectedId) {
-            /* Если выбрана еще не выбранная клетка, выбирае ее и меняем состояние приложения соответственно */
+            /* переключаем внешний вид клеток только если какая-то клетка уже была выбрана (то есть это не первый за игру выбор клетки) */
             if (appState.selectedId !== -1) {
+                // переключаем внешний вид выбранной клетки и клеток с ходами
                 this.toggleSelectedSquare();
+                this.toggleHighlightedSquares();
             }
 
+            // устанавливаем текущее состояние приложения
             appState.selectedSquareElement = selectedSquare;
             appState.selectedId = selectedId;
+            appState.moves = this.horsyfier.getHorseMoves();
 
+            // переключаем внешний вид выбранной клетки и клеток с ходами
             this.toggleSelectedSquare();
+            this.toggleHighlightedSquares();
         }
         else {
-            /* Если нажата уже выбранная клетка, то отменяем выделение и сбрасываем состояние */
+            /* Если нажата уже выбранная клетка, то:
+                выключаем выделени выбранной клетки
+                выключаем подсветку клеток с ходами
+                сбрасываем состояние к исходному
+            */
             this.toggleSelectedSquare();
+            this.toggleHighlightedSquares();
 
-            appState.selectedId = -1;
-            appState.selectedSquareElement = undefined;
-
+            this.resetAppState();
         }
-        console.log(appState.selectedSquareElement);
+
+        // console.log(appState.moves);
     }
 
     /**
@@ -165,4 +196,24 @@ class ChessController {
         }
     }
 
+    toggleHighlightedSquares() {
+        // подсвчиваем клетки
+        let squareElement;
+        appState.moves.forEach((e) => {
+            squareElement = this.squaresDiv.querySelector(`#${e}`);
+            // squareElement.classList.toggle('square-highlighted');
+            if (squareElement.classList.contains('square-white')) {
+                squareElement.classList.toggle('square-highlighted-white');
+            }
+            else if (squareElement.classList.contains('square-black')) {
+                squareElement.classList.toggle('square-highlighted-black');
+            }
+        });
+    }
+
+    resetAppState() {
+        appState.selectedId = -1;
+        appState.selectedSquareElement = undefined;
+        appState.moves = [];
+    }
 }
