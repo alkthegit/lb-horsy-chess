@@ -75,29 +75,33 @@ class ChessController {
      * @private
      */
     initializeBoard() {
-        this.boardDiv = document.createElement('div');
-        this.boardDiv.classList.add("board");
+        // создаем каркас доски
+        const boardHTML = `
+            <div class="board">
+                <div class="area-topleft"></div>
+                <div class="axis-top"></div>
+                <div class="area-topright"></div>
 
-        this.containerDiv.insertAdjacentElement("afterbegin", this.boardDiv);
+                <div class="axis-left"></div>
+                <div class="squares"></div>
+                <div class="axis-right"></div>
+                
+                <div class="area-bottomleft"></div>
+                <div class="axis-bottom"></div>
+                <div class="area-bottomright"></div>
+            </div>
+        `;
 
-        this.squaresDiv = document.createElement('div');
-        this.squaresDiv.classList.add("squares");
-        this.boardDiv.insertAdjacentElement("afterbegin", this.squaresDiv);
+        this.containerDiv.insertAdjacentHTML("afterbegin", boardHTML);
 
-        /* Порождение верхней оси кординат */
-        /* let axisRow = document.createElement('div');
-        let colAxisHTML = '';
-        for (let col = 0; col < 8; col++) {
-            colAxisHTML = `<div class="col-axis">${col + 1}</div>`;
-            axisRow.insertAdjacentHTML("beforeend", colAxisHTML);
-        }
-        this.boardDiv.insertAdjacentElement("afterbegin", axisRow); */
+        // сохраняем ссылки на элементы доски
+        this.boardDiv = this.containerDiv.querySelector(".board");
+        this.squaresDiv = this.boardDiv.querySelector(".squares");
 
         /* Порождение клеток */
         let squareId = '';
         let squareHTML = '';
         let squareClass = '';
-
         for (let row = 7; row >= 0; row--) {
             for (let col = 0; col < 8; col++) {
                 squareId = `${LettersValuesMap.get(col + 1)}${row + 1}`;
@@ -114,11 +118,8 @@ class ChessController {
             }
         }
 
-        /* Порождение нижней оси кординат */
-        /* for (let col = 0; col < 8; col++) {
-            colAxisHTML = `<div class="col-axis">${LettersValuesMap.get(col + 1)}</div>`;
-            this.boardDiv.insertAdjacentHTML("beforeend", colAxisHTML);
-        } */
+        /* Порождение осей */
+        this.populateAxis();
     }
 
     /**
@@ -211,9 +212,32 @@ class ChessController {
         });
     }
 
+    /**
+     * Сбрасывает текущее состояние приложения к исходному состоянию
+     * 
+     * @private
+     */
     resetAppState() {
         appState.selectedId = -1;
         appState.selectedSquareElement = undefined;
         appState.moves = [];
+    }
+
+    /**
+     * Заполняет оси соответствующей разметкой
+     * 
+     * @private
+     */
+    populateAxis() {
+        const axisHTML = `
+            <div class="axis-hr">A</div>
+            <div class="axis-hr">B</div>
+            <div class="axis-hr">C</div>
+            <div class="axis-hr">D</div>
+            <div class="axis-hr">E</div>
+            <div class="axis-hr">F</div>
+            <div class="axis-hr">G</div>
+            <div class="axis-hr">H</div>
+        `;
     }
 }

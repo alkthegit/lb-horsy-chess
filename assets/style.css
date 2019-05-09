@@ -40,15 +40,21 @@ header .main-subheading{
 }
 
 .board{
-    border: 1px solid black;
+    border: 2px solid black;
+    box-sizing: content-box;
     height: 500px;
     width: 500px;
     background-color: #eeeeee;
     margin: 25px auto;
     /* padding: 30px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    display: grid;
+    grid-template-areas:
+        "topleft top topright"
+        "left center right"
+        "bottomleft bottom bottomright"
 }
 
 .squares{
@@ -57,37 +63,70 @@ header .main-subheading{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    border: 1px solid darkgoldenrod;
+    /* border: 1px solid darkgoldenrod; */
+    grid-area: center;
 }
 
-.col-axis{
-    width: 50px;
-    height: 20px;
-    /* border: 1px solid grey; */
-    margin: 10px 0;
-    text-align: center;
-    position: relative;
-    
-    /* transform: translateY(-100%); */
+.area-topleft,
+.area-topright,
+.area-bottomleft,
+.area-bottomright{
+    box-sizing: border-box;
 }
 
-.row-axis{
-    width: 20px;
+.area-topleft{
+    grid-area: topleft;
+}
+
+.area-topright{
+    grid-area: topright;
+}
+
+.area-bottomleft{
+    grid-area: bottomleft;
+}
+
+.area-bottomright{
+    grid-area: bottomright;
+}
+
+.axis-top,
+.axis-bottom{
     height: 50px;
-    /* border: 1px solid grey; */
-    margin: 0 10px;
-    text-align: center;
-    position: relative;
-    
-    /* transform: translateY(-100%); */
+    border: 1px solid grey;
+    box-sizing: border-box
+}
+
+.axis-top{
+    grid-area: top;
+}
+
+.axis-bottom{
+    grid-area: bottom;
+}
+
+.axis-left,
+.axis-right{
+    width: 50px;
+    border: 1px solid grey;
+    box-sizing: border-box
+}
+
+.axis-left{
+    grid-area: left;
+}
+
+.axis-right{
+    grid-area: right;
 }
 
 .square-black,
 .square-white{
     width: 50px;
     height: 50px;
-    /* border: 1px solid grey; */
+    box-sizing: border-box;
     margin:0;
+    border: 1px solid crimson;
 }
 
 .square-black{
