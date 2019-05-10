@@ -3,7 +3,7 @@ const positionFormatRegexp = /^[a-hA-H]{1}[1-9]{1}$/i;
 /**
  * @const {Map}
  */
-const LettersValuesMap = new Map([
+export const LettersValuesMap = new Map([
     ['a', 1],
     ['b', 2],
     ['c', 3],
@@ -60,7 +60,7 @@ const horseTries = [
     }
 ];
 
-class Horsyfier {
+export class Horsyfier {
     /*
         Числовой двухмерный индекс, соответствующий текущему положению фигуры
         диапазо каждого измерения - [0; 7].

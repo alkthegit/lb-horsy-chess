@@ -1,3 +1,4 @@
+import { LettersValuesMap } from './Horsyfier.mjs';
 /**
  * Состояние приложения
  * @type {{selectedId: number, selectedSquareElement: HTMLDivElement, moves: string[]}}
@@ -8,7 +9,7 @@ const appState = {
     moves: []
 }
 
-class ChessController {
+export default class ChessController {
     /**
      * Экземпляр класса Horsyfier
      * 
