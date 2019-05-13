@@ -1,0 +1,11 @@
+{
+  "name": "horsy-chess",
+  "version": "1.0.0",
+  "description": "Simple resolver for knight moves on chess board",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Kuzin-Aleksinskij",
+  "license": "ISC"
+}
