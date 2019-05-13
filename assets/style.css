@@ -1,198 +1,208 @@
 * {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-header{
-    height: 15vh;
-    background-color: #005272;
-    color: white;
-    padding-bottom: 10px;
+header {
+  height: 15vh;
+  background-color: #005272;
+  color: white;
+  padding-bottom: 10px;
 }
 
-header h1{
-    padding-top: 10px;
-    opacity: 0.8;
-    text-align: center;
+header h1 {
+  padding-top: 10px;
+  opacity: 0.8;
+  text-align: center;
 }
 
-header h1::before{
-    content: '👑';
-    position: absolute;
-    transform: translateX(-110%);
-    font-size: 1.5em;
+header h1::before {
+  content: '👑';
+  position: absolute;
+  transform: translateX(-110%);
+  font-size: 1.5em;
 }
 
-header p{
-    margin-top: 10px;
-    text-align: center;
-    opacity: 0.8;
+header p {
+  margin-top: 10px;
+  text-align: center;
+  opacity: 0.8;
 }
 
-header .main-subheading{
-    font-size: 16px;
-    margin-top: -3px;
-    transform: rotate(-2deg) translateX(4em);
+header .main-subheading {
+  font-size: 16px;
+  margin-top: -3px;
+  transform: rotate(-2deg) translateX(4em);
 }
 
-.board{
-    border: 2px solid black;
-    box-sizing: content-box;
-    height: 500px;
-    width: 500px;
-    background-color: #eeeeee;
-    margin: 25px auto;
-    /* padding: 30px; */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    display: grid;
-    grid-template-areas:
-        "topleft top topright"
-        "left center right"
-        "bottomleft bottom bottomright"
+.board {
+  border: 2px solid black;
+  box-sizing: content-box;
+  height: 500px;
+  width: 500px;
+  background-color: #eeeeee;
+  margin: 25px auto;
+  /* padding: 30px; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  display: grid;
+  grid-template-areas:
+    'topleft top topright'
+    'left center right'
+    'bottomleft bottom bottomright';
 }
 
-.squares{
-    width: 400px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    /* border: 1px solid darkgoldenrod; */
-    grid-area: center;
+.squares {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* border: 1px solid darkgoldenrod; */
+  grid-area: center;
 }
 
 .area-topleft,
 .area-topright,
 .area-bottomleft,
-.area-bottomright{
-    box-sizing: border-box;
+.area-bottomright {
+  box-sizing: border-box;
 }
 
-.area-topleft{
-    grid-area: topleft;
+.area-topleft {
+  grid-area: topleft;
 }
 
-.area-topright{
-    grid-area: topright;
+.area-topright {
+  grid-area: topright;
 }
 
-.area-bottomleft{
-    grid-area: bottomleft;
+.area-bottomleft {
+  grid-area: bottomleft;
 }
 
-.area-bottomright{
-    grid-area: bottomright;
+.area-bottomright {
+  grid-area: bottomright;
 }
 
 .axis-top,
-.axis-bottom{
-    height: 50px;
-    width: 400px;
-    /* border: 1px solid grey; */
-    box-sizing: border-box;
-    text-align: center;
+.axis-bottom {
+  height: 50px;
+  width: 400px;
+  /* border: 1px solid grey; */
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.axis-top{
-    grid-area: top;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 5px;
+.axis-top {
+  grid-area: top;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 5px;
 }
 
-.axis-bottom{
-    grid-area: bottom;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 5px;
+.axis-bottom {
+  grid-area: bottom;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 5px;
 }
 
 .axis-left,
-.axis-right{
-    width: 50px;
-    height: 400px;
-    /* border: 1px solid grey; */
-    box-sizing: border-box;
+.axis-right {
+  width: 50px;
+  height: 400px;
+  /* border: 1px solid grey; */
+  box-sizing: border-box;
 }
 
-.axis-left{
-    grid-area: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    padding-right: 5px;
+.axis-left {
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 5px;
 }
 
-.axis-right{
-    grid-area: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding-left: 5px;
+.axis-right {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 5px;
 }
 
 .square-black,
-.square-white{
-    width: 50px;
-    height: 50px;
-    box-sizing: border-box;
-    margin:0;
-    font-weight: bold;
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 50px;
-    /* border: 1px solid crimson; */
+.square-white {
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  line-height: 50px;
+  /* border: 1px solid crimson; */
 }
 
-.axis-label-hr{
-    width: 50px;
+.axis-label-hr {
+  width: 50px;
 }
 
-.axis-label-vr{
-    height: 50px;
-    line-height: 50px;
+.axis-label-vr {
+  height: 50px;
+  line-height: 50px;
 }
 
-.square-black{
-    background-color: #003030;
-    color: #eaabfd;
+.square-black {
+  background-color: #003030;
+  color: #eaabfd;
 }
 
-.square-white{
-    background-color: #eeffff;
-    color: #680088;
+.square-white {
+  background-color: #eeffff;
+  color: #680088;
 }
 
 .square-white:hover,
-.square-black:hover{
-    cursor: pointer;
+.square-black:hover {
+  cursor: pointer;
 }
 
 .square-selected-black,
-.square-black:hover{
-    box-shadow: inset 0px 0px 10px 10px #00ff55;
+.square-black:hover {
+  box-shadow: inset 0px 0px 5px 4px #00ff55;
+}
+
+.square-selected-black,
+.square-black:active {
+  box-shadow: inset 0px 0px 10px 6px #00ff55;
 }
 
 .square-selected-white,
-.square-white:hover{
-    box-shadow: inset 0px 0px 10px 10px #00c542;
+.square-white:hover {
+  box-shadow: inset 0px 0px 5px 4px #00c542;
 }
 
-.square-highlighted-white{
-    background: #a400d6;
-    color: #eaabfd;
+.square-selected-white,
+.square-white:active {
+  box-shadow: inset 0px 0px 10px 6px #00c542;
 }
 
-.square-highlighted-black{
-    background: #680088;
+.square-highlighted-white {
+  background: #a400d6;
+  color: #eaabfd;
+}
+
+.square-highlighted-black {
+  background: #680088;
 }
