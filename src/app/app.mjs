@@ -1,8 +1,10 @@
-import ChessController from './ChessController.mjs';
+import Controller from './Controller.mjs';
 import { Horsyfier } from './Horsyfier.mjs';
-export const initializeApp = function initializeApp() {
 
-    const containerDiv = document.querySelector('#horsyChessApp');
-    const chessController = new ChessController(containerDiv, new Horsyfier());
-    chessController.initializeGame();
-}
+const initializeApp = function initializeApp(document) {
+  const containerDiv = document.querySelector('#horsyChessApp');
+  const controller = new Controller(containerDiv, new Horsyfier());
+  controller.initializeGame();
+};
+
+export default initializeApp;
