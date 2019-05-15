@@ -34,7 +34,7 @@ const resetAppState = function resetAppState() {
   appState.moves = [];
 };
 
-export default class ChessController {
+export default class Controller {
   /**
    *
    * @param {HTMLDivElement} containerDiv Элемент-контейнер для всего веб-приложения
